@@ -6,6 +6,7 @@ import './Board.css'
 
 function Board () {
 
+
     return (
         <div className="board-content">
 
@@ -19,7 +20,7 @@ function Board () {
 
             <Task/>
 
-            <div className="add-task">
+            <div className="add-task" data-cy="add-task">
                 <AiOutlinePlusCircle/>
                 <span>
                     New Task
