@@ -1,0 +1,19 @@
+.task-container {
+    background-color: #FAFAFA;
+    width: 294px;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid #E0E0E0;
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+}
+
+.task-container > .no-task {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #757575;
+    /* margin-left: ; */
+}
