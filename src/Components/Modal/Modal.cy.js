@@ -7,6 +7,11 @@ describe('<Modal />',()=>{
         cy.mount(<Modal/>)   
     })
 
+    it('The modal container should be has display none by default',()=>{
+        cy.mount(<Modal/>)
+        cy.get('[data-cy="modal-container"]').should('have.css','display','none')
+    })
+
     it('The title Modal text should be "Create Task" if the status is create new title modal',()=>{
         cy.mount(<Modal/>)
         cy.get('[data-cy="create-task-modal"]').should('have.text','Create Task')

@@ -8,25 +8,27 @@ function Board () {
 
 
     return (
-        <div className="board-content">
+        <div className="board-container">
+            <div className="board-content">
 
-            <div className="title">
-                Group Task 1
-            </div>
+                <div className="title">
+                    Group Task 1
+                </div>
 
-            <span className="desc">
-                January - March
-            </span>
-
-            <Task/>
-
-            <div className="add-task" data-cy="add-task">
-                <AiOutlinePlusCircle/>
-                <span>
-                    New Task
+                <span className="desc">
+                    January - March
                 </span>
-            </div>
 
+                <Task/>
+
+                <div className="add-task" data-cy="add-task">
+                    <AiOutlinePlusCircle/>
+                    <span>
+                        New Task
+                    </span>
+                </div>
+
+            </div>
         </div>
     )
 
