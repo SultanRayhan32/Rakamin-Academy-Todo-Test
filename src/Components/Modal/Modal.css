@@ -31,20 +31,24 @@
 
 .modal-content {
     background-color: #fefefe;
-    width: 500px;
-    height: 300px;
+    width: 420px;
+    height: 311px;
     -webkit-animation-name: slideIn;
     -webkit-animation-duration: 0.4s;
     animation-name: slideIn;
     animation-duration: 0.4s;
-    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* padding: 24px; */
 }
 
 .modal-content > .modal-input-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 388px;
+    margin-top: 24px;
 }
 
 .modal-content > .modal-input-title > span {
@@ -52,4 +56,101 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 28px;
+    color: #1D1F20;;
+}
+
+.modal-content > form {
+    margin-top: 24px;
+}
+
+.modal-content > form > .input-content {
+    display: flex;
+    flex-direction: column;
+    /* width: 100%; */
+}
+
+.modal-content > form > .input-content > span {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 20px;
+    color: #404040;
+}
+
+.modal-content > form > .input-content > input {
+    background: #FFFFFF;
+    border: 2px solid #EDEDED;
+    border-radius: 8px;
+    width: 372px;
+    height: 36px;
+    margin-top: 8px;
+    padding-left: 16px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: #404040;
+}
+
+.modal-content > form > .input-content > input::-webkit-input-placeholder { /* Edge */
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: #404040;
+    opacity: 0.5;
+}
+  
+.modal-content > form > .input-content > input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: #404040;
+    opacity: 0.5;
+}
+
+.modal-content > form > .input-content > input::placeholder {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: #404040;
+    opacity: 0.5;
+}
+
+.modal-content > .button-container {
+    width: 388px;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 25px;
+}
+
+.modal-content > .button-container > .b1 {
+    width: 97px;
+    height: 32px;
+    background: #01959F;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+    margin-left: 5px;
+    border: none;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+
+.modal-content > .button-container > .b2 {
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+    width: 76px;
+    height: 32px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    color: #1D1F20;
 }
