@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { FiMoreHorizontal } from 'react-icons/fi'
-import { HiCheckCircle } from 'react-icons/hi'
+import { FiMoreHorizontal } from 'react-icons/fi';
+import { HiCheckCircle } from 'react-icons/hi';
 
 function TaskItem ({task}) {
 
@@ -36,6 +36,7 @@ function TaskItem ({task}) {
 
                     </div>
                 </div>
+
                 {
                     progress_percentage === 100 ? 
                         <HiCheckCircle 

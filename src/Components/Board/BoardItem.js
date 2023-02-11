@@ -1,7 +1,7 @@
 import React , { useState } from 'react';
 
 import Task from '../Task/Task';
-import AddTask from '../AddTask/AddTask';
+import AddTask from './AddTask';
 
 function BoardItem ({board}) {
 
