@@ -1,4 +1,9 @@
 .task-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.task-container > .task-content { 
     background-color: #FAFAFA;
     width: 294px;
     height: 40px;
@@ -9,7 +14,7 @@
     padding: 8px 16px;
 }
 
-.task-container > .no-task {
+.task-container > .task-content > .no-task {
     font-style: normal;
     font-weight: 400;
     font-size: 14px;

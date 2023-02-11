@@ -1,9 +1,7 @@
-import React , { useEffect , useState } from 'react';
-import axios from 'axios'
+import React , { useState } from 'react';
 
 import Task from '../Task/Task';
 import AddTask from '../AddTask/AddTask';
-import { URL , API } from '../../Helper/API-URL'
 
 function BoardItem ({board}) {
 
@@ -16,21 +14,6 @@ function BoardItem ({board}) {
     } = board
 
     const [dataTask,setDataTask] = useState(null)
-
-    useEffect(()=>{
-        axios({
-            method: 'GET', 
-            url: `${URL}todos/${id}/items`, 
-            headers: {
-                Authorization: API
-            }
-        })
-        .then(({data})=>{
-            console.log(data , ' <<<< DATA')
-            setDataTask(data)
-        })
-        .catch(console.log)
-    },[])
 
     let checkIndex = () => {
         if (index === 0){ 
@@ -55,7 +38,7 @@ function BoardItem ({board}) {
                 {description}
             </span>
 
-            <Task/>
+            <Task data={{id,setDataTask,dataTask}}/>
 
             <AddTask/>
 
