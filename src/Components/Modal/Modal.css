@@ -139,6 +139,7 @@
     font-size: 14px;
     line-height: 24px;
     color: #FFFFFF;
+    cursor: pointer;
 }
 
 .modal-content > .button-container > .b2 {
@@ -153,4 +154,5 @@
     font-size: 14px;
     line-height: 24px;
     color: #1D1F20;
+    cursor: pointer;
 }

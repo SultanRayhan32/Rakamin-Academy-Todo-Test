@@ -49,6 +49,8 @@ function BoardItem ({board}) {
 
             <Modal
                 id={id}
+                dataTask={dataTask}
+                setDataTask={setDataTask}
             />
             {/* {
                 showModal &&

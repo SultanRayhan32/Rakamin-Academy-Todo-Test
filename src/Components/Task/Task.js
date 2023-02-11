@@ -24,8 +24,11 @@ function Task ({data}) {
             }
         })
         .then(({data})=>{
-            console.log(data , ' <<< DATA TASK')
-            setDataTask(data)
+            let arrNew = [...data]
+            arrNew.sort((a,b)=>{
+                return new Date(b.created_at) - new Date(a.created_at)
+            })
+            setDataTask(arrNew)
         })
         .catch(console.log)
     },[id,setDataTask])
