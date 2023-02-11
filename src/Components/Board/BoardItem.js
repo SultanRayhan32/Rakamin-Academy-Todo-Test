@@ -13,7 +13,7 @@ function BoardItem ({board}) {
         id
     } = board
 
-    const [dataTask,setDataTask] = useState(null)
+    const [dataTask,setDataTask] = useState([])
 
     let checkIndex = () => {
         if (index === 0){ 

@@ -21,7 +21,7 @@ describe('<Board />',()=>{
             cy.mount(<Board/>)
             // cy.log(data.body)
             cy.log( document.getElementById("board-container") ) 
-            // cy.get('.board-container').children().should('have.length', data.body.length)
+            cy.get('.board-container').children().should('have.length', data.body.length)
         })
     })
     
