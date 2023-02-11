@@ -7,6 +7,7 @@
     display: flex;
     flex-direction: column;
     margin-right: 16px;
+    border-radius: 4px;
 }
 
 .board-content > .title {
