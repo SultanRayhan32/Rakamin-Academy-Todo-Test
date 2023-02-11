@@ -2,6 +2,9 @@ import React , { useState } from 'react';
 
 import Task from '../Task/Task';
 import AddTask from './AddTask';
+import Modal from '../Modal/Modal';
+
+
 
 function BoardItem ({board}) {
 
@@ -40,7 +43,16 @@ function BoardItem ({board}) {
 
             <Task data={{id,setDataTask,dataTask}}/>
 
-            <AddTask/>
+            <AddTask
+                id={id}
+            />
+
+            <Modal
+                id={id}
+            />
+            {/* {
+                showModal &&
+            } */}
 
         </div>
     )

@@ -1,27 +1,33 @@
 import React from 'react';
-
+import { AiOutlineClose } from 'react-icons/ai'
 import './Modal.css';
 
-function Modal (props) {
+function Modal ({id}) {
 
-    const {
-        showModal,setShowModal
-    } = props
 
     let handleModalClick = (e) => {
-        e.stopPropagation()
-        setShowModal(false)
-        console.log("WKWKWKWK")
+        const modal = document.getElementById(`modal${id}`)
+        if (e.target===modal) {
+            modal.style.display = "none"
+        }
     }
 
     return (
         <div 
             className="modal" 
-            style={{display:showModal?"flex":"none"}}
+            id={`modal${id}`}
             onClick={e=>handleModalClick(e)}
         >
             <div className="modal-content">
-                dskfskdsfkdsjf
+                <div className="modal-input-title">
+                    <span >
+                        Create Task
+                    </span>
+                    <AiOutlineClose 
+                        size={23}
+                        style={{color:"#404040"}}
+                    />   
+                </div>
             </div>
         </div>
     )

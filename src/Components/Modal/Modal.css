@@ -1,7 +1,7 @@
 .modal {
     display: none; 
     position: fixed; 
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
     z-index: 1; 
@@ -14,19 +14,42 @@
     -webkit-animation-name: fadeIn; 
     -webkit-animation-duration: 0.4s;
     animation-name: fadeIn;
-    animation-duration: 0.4s
+    animation-duration: 0.4s;
 }
   
+.fake-modal {
+    display: none; 
+    position: fixed; 
+    z-index: 99; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    /* background-color: pink; */
+}
+
 .modal-content {
-    /* position: fixed; */
-    /* top: 50%; */
-    /* left: 50%; */
     background-color: #fefefe;
     width: 500px;
     height: 300px;
     -webkit-animation-name: slideIn;
     -webkit-animation-duration: 0.4s;
     animation-name: slideIn;
-    animation-duration: 0.4s
-    /* CONTENT */
+    animation-duration: 0.4s;
+    padding: 24px;
+}
+
+.modal-content > .modal-input-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.modal-content > .modal-input-title > span {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
 }

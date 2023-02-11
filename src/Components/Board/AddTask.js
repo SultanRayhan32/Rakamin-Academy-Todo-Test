@@ -1,26 +1,20 @@
-import React , { useState } from 'react';
+import React from 'react';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
-import Modal from '../Modal/Modal';
 
 
-function AddTask () {
-
-    const [showModal,setShowModal] = useState(false)
+function AddTask ({id}) {
 
     return (
         <div
             className="add-task" 
             data-cy="add-task"
-            onClick={e=>setShowModal(true)}
+            onClick={e=>document.getElementById(`modal${id}`).style.display = "flex"}
         >
             <AiOutlinePlusCircle/>
             <span>
                 New Task
             </span>
-            <Modal
-                showModal={showModal}
-                setShowModal={setShowModal}
-            />
+           
         </div>
     )
     
