@@ -1,34 +1,44 @@
-import React from 'react';
-import { AiOutlinePlusCircle } from 'react-icons/ai'
-import Task from '../Task/Task';
+import React , { useEffect , useState } from 'react';
 
-import './Board.css'
+import axios from 'axios'
+import BoardItem from './BoardItem';
+import { URL , API } from '../../Helper/API-URL'
+
+import './Board.css';
 
 function Board () {
 
+    const [dataBoard,setDataBoard] = useState(null)
+
+    useEffect(()=>{
+        axios({
+            method: 'GET', 
+            url: `${URL}todos`, 
+            headers: {
+                Authorization: API
+            }
+        })
+        .then(({data})=>{
+            setDataBoard(data)
+        })
+        .catch(console.log)
+    },[])
+
+    let renderBoard = () => {
+        return dataBoard.map((board,index)=>{
+            return <BoardItem 
+                board={{...board,index,last:dataBoard.length}}
+            />
+        })
+    }
 
     return (
-        <div className="board-container">
-            <div className="board-content">
-
-                <div className="title">
-                    Group Task 1
-                </div>
-
-                <span className="desc">
-                    January - March
-                </span>
-
-                <Task/>
-
-                <div className="add-task" data-cy="add-task">
-                    <AiOutlinePlusCircle/>
-                    <span>
-                        New Task
-                    </span>
-                </div>
-
-            </div>
+        <div 
+            className="board-container" 
+            data-cy="board-container" 
+            id="board-container"
+        >
+            {dataBoard && renderBoard()}
         </div>
     )
 
