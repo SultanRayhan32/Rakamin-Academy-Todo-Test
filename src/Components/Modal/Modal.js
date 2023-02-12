@@ -54,7 +54,8 @@ function Modal ({id,setDataTask,dataTask}) {
                     </span>
                     <AiOutlineClose 
                         size={23}
-                        style={{color:"#404040"}}
+                        style={{color:"#404040",cursor:"pointer"}}
+                        onClick={e=>document.getElementById(`modal${id}`).style.display = "none"}
                     />   
                 </div>
 
@@ -88,7 +89,10 @@ function Modal ({id,setDataTask,dataTask}) {
                 </form>
 
                 <div className="button-container">
-                    <button className="b2">
+                    <button 
+                        className="b2"
+                        onClick={e=>document.getElementById(`modal${id}`).style.display = "none"}
+                    >
                         Cancel
                     </button>
                     <button 

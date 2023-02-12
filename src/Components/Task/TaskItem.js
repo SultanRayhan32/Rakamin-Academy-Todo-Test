@@ -1,14 +1,19 @@
-import React from 'react';
+import React , { useState } from 'react';
 
 import { FiMoreHorizontal } from 'react-icons/fi';
 import { HiCheckCircle } from 'react-icons/hi';
+
+import Menu from '../Menu/Menu';
 
 function TaskItem ({task}) {
 
     const {
         name,
-        progress_percentage
+        progress_percentage,
+        id
     } = task
+
+    const [checkMenu,setCheckMenu] = useState(false)
 
     const checkProggresPercentage = () => {
         if (progress_percentage === 100) {
@@ -27,7 +32,7 @@ function TaskItem ({task}) {
            <span className="task-title">
                 {name}
            </span>
-           <div className="container-proggres-edit">
+           <div className="container-proggres-edit" style={{position:"relative"}}>
                 <div className="proggres-bar-border">
                     <div 
                         className="proggres-bar-color"
@@ -47,10 +52,22 @@ function TaskItem ({task}) {
                             {progress_percentage + "%"}
                         </span>
                 }
+                {
+                    checkMenu && 
+                        <div 
+                            className="menu-fake"
+                            onClick={e=>[document.getElementById(`menu-container-task-${id}`).style.display = "none",setCheckMenu(false)]}
+                        >
+
+                        </div>
+                }
                 <FiMoreHorizontal 
                     className="more-menu"
                     size={20}
+                    // onClick={e=>}
+                    onClick={e=>[document.getElementById(`menu-container-task-${task.id}`).style.display = "flex",setCheckMenu(true)]}
                 />
+                <Menu id={id}/>
            </div>
         </div>
     )

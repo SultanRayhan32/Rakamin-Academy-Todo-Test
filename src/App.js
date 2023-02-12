@@ -12,7 +12,7 @@ function App () {
         <div className="main-container">
             <Navbar/>
             <Board/>
-            <Menu/>
+            {/* <Menu/> */}
         </div>
     )
 
