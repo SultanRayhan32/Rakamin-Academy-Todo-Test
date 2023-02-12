@@ -63,19 +63,21 @@ function Board () {
 
     let renderBoard = () => {
         return dataBoard.map((board,index)=>{
-            return (<BoardItem 
-                board={
-                        {
-                            ...board,
-                            index,
-                            last:dataBoard.length, 
-                            moveTaskAction : moveTaskAction,
-                            addNewTask,
-                            removeNewTask,
-                            idOfTask,
-                        }
-                    }                
-            />)
+            return (
+                <BoardItem 
+                    board={
+                            {
+                                ...board,
+                                index,
+                                last:dataBoard.length, 
+                                moveTaskAction : moveTaskAction,
+                                addNewTask,
+                                removeNewTask,
+                                idOfTask,
+                            }
+                        }                
+                />
+            )
         })
     }
 
