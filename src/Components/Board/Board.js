@@ -2,7 +2,8 @@ import React , { useEffect , useState } from 'react';
 
 import axios from 'axios';
 import BoardItem from './BoardItem';
-import { URL , API } from '../../Helper/API-URL'
+import { URL , API } from '../../Helper/API-URL';
+import Modal from '../Modal/Modal';
 
 import './Board.css';
 
@@ -22,8 +23,11 @@ function Board () {
             }
         })
         .then(({data})=>{
-            console.log(data , ' <<< data board')
-            setDataBoard(data)
+            let arrNew = [...data]
+            arrNew.sort((a,b)=>{
+                return new Date(b.created_at) - new Date(a.created_at)
+            })
+            setDataBoard(arrNew)
         })
         .catch(console.log)
     }
@@ -91,6 +95,12 @@ function Board () {
             id="board-container"
         >
             {dataBoard && renderBoard()}
+            <Modal
+                id="-add-board-1"
+                dataBoard={dataBoard}
+                setDataBoard={setDataBoard}
+                type={"add-board"}
+            />
         </div>
     )
 

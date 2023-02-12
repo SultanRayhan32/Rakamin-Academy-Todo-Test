@@ -7,7 +7,20 @@ import { API , URL } from '../../Helper/API-URL'
 
 import './Modal.css';
 
-function Modal ({id,setDataTask,dataTask,type,todo_id,index,task,setIsDelete}) {
+function Modal (props) {
+
+    const {
+        id,
+        setDataTask,
+        dataTask,
+        type,
+        todo_id,
+        index,
+        task,
+        setIsDelete,
+        dataBoard,
+        setDataBoard
+    } = props
 
     useEffect(()=>{
         if (type==="edit-item") {
@@ -19,6 +32,7 @@ function Modal ({id,setDataTask,dataTask,type,todo_id,index,task,setIsDelete}) {
 
     const [name,setName] = useState("")
     const [progress,setProgress] = useState(0)
+    const [description,setDescription] = useState("")
 
     let handleModalClick = (e) => {
         const modal = document.getElementById(`modal${id}`)
@@ -92,6 +106,27 @@ function Modal ({id,setDataTask,dataTask,type,todo_id,index,task,setIsDelete}) {
         })
     }
 
+    let addBoardApi = () => {
+        axios({
+            method: 'POST', 
+            url: `${URL}todos/`, 
+            data : {
+                title : name,
+                description
+            },
+            headers: {
+                Authorization: API
+            }
+        })
+        .then(({data})=>{
+            console.log('>><><><><>< )()()()(')
+            let newData = [...dataBoard]
+            newData.unshift(data)
+            setDataBoard(newData)
+        })
+        .catch(err=>console.log(err , ' <<< error add'))
+    }
+
     let renderTitle = () => {
         if (type==="add-item") return "Create Task"
         else if (type==="edit-item") return "Edit Task"
@@ -109,15 +144,14 @@ function Modal ({id,setDataTask,dataTask,type,todo_id,index,task,setIsDelete}) {
     let handleButton = () => {
         if (type==="add-item") {
             createNewItemAPI() 
-            document.getElementById(`modal${id}`).style.display = "none"
         } else if (type==="edit-item") {
             editItemAPI()
-            document.getElementById(`modal${id}`).style.display = "none"
         }else if (type === "delete-item") {
             deleteItemApi()
-            document.getElementById(`modal${id}`).style.display = "none"
+        }else {
+            addBoardApi()
         }
-
+        document.getElementById(`modal${id}`).style.display = "none"
     }
 
     let handleCloseModal = () => {
@@ -132,6 +166,12 @@ function Modal ({id,setDataTask,dataTask,type,todo_id,index,task,setIsDelete}) {
         else return "Submit"
     }
 
+    let handleHeightModal = () => {
+        if (type === "delete-item") return 188
+        else if (type === "add-board") return 369
+        else return null
+    }
+
     return (
         <div 
             className="modal" 
@@ -143,7 +183,7 @@ function Modal ({id,setDataTask,dataTask,type,todo_id,index,task,setIsDelete}) {
             <div 
                 className="modal-content"
                 style={{
-                    height : type === "delete-item" ? 188 : null
+                    height :  handleHeightModal()
                 }}
             >
 
@@ -166,31 +206,56 @@ function Modal ({id,setDataTask,dataTask,type,todo_id,index,task,setIsDelete}) {
 
                             <div className="input-content">
                                 <span>
-                                    Task Name
+                                    { type==="add-board" ? "Title" : "Task Name" }
                                 </span>
                                 <input
-                                    placeholder="Type your task"
+                                    placeholder={type==="add-board" ? "Type your todo" : "Type your task"}
                                     onChange={e=>setName(e.target.value)}
                                     value={name}
                                     // defaultValue={type ==="edit-task" ? dataTask[index].name : null}
                                 />
                             </div>
 
-                            <div 
-                                className="input-content" 
-                                style={{marginTop:16}}
-                            >
-                                <span>
-                                    Proggress
-                                </span>
-                                <input 
-                                    placeholder="70%" 
-                                    type={"number"}
-                                    style={{width:143}}
-                                    onChange={e=>setProgress(e.target.value)}
-                                    value={progress}
-                                />
-                            </div>
+                            {
+                                type==="add-board" ?
+                                    <div 
+                                        className="input-content" 
+                                        style={{marginTop:16}}
+                                    >
+                                        <span>
+                                            Description
+                                        </span>
+                                        {/* <input 
+                                            placeholder="Type the description" 
+                                            style={{height : 88}}
+                                            onChange={e=>setDescription(e.target.value)}
+                                            value={description}
+                                        /> */}
+                                        <textarea
+                                            placeholder="Type the description" 
+                                            style={{height : 88}}
+                                            onChange={e=>setDescription(e.target.value)}
+                                            value={description}
+                                        >
+
+                                        </textarea>
+                                    </div> :
+                                    <div 
+                                        className="input-content" 
+                                        style={{marginTop:16}}
+                                    >
+                                        <span>
+                                            Proggress
+                                        </span>
+                                        <input 
+                                            placeholder="70%" 
+                                            type={"number"}
+                                            style={{width:143}}
+                                            onChange={e=>setProgress(e.target.value)}
+                                            value={progress}
+                                        />
+                                    </div>
+                            }
 
                         </form> :
                         <span className="delete-message">

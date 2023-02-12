@@ -4,8 +4,6 @@ import Task from '../Task/Task';
 import AddTask from './AddTask';
 import Modal from '../Modal/Modal';
 
-
-
 function BoardItem ({board}) {
 
     const {
@@ -41,7 +39,7 @@ function BoardItem ({board}) {
             let result = newArr.filter(task=>task.id!==idOfTask.id)
             setDataTask(result)
         }
-    },[addNewTask,removeNewTask,idOfTask,dataTask,id])
+    },[addNewTask,removeNewTask,idOfTask])
 
     return (
         <div 
