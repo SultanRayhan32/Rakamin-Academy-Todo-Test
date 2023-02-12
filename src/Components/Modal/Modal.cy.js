@@ -24,14 +24,16 @@ describe('<Modal />',()=>{
 
     it('The title Modal text should be "Delete Task" if the status is delete new title modal',()=>{
         cy.mount(<Modal/>)
-        cy.get('[data-cy="delete-task-modal"]').should('have.text','Create Task')
+        cy.get('[data-cy="delete-task-modal"]').should('have.text','Delete Task')
     })
 
     it('The edit task input should have default value',()=>{
+        cy.mount(<Modal/>)
         cy.get('[data-cy="input-edit-task-name]"').should('not.empty')
     })
 
     it('The create task input should have placeholder',()=>{
+        cy.mount(<Modal/>)
         cy.get('[data-cy="input-create-task-name]"').should('have.attr', 'placeholder', 'Type your task')
         cy.get('[data-cy="input-create-task-progress]"').should('have.attr', 'placeholder', 'Type your progress')
     })

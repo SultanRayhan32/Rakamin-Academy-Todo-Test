@@ -41,7 +41,7 @@ function BoardItem ({board}) {
             let result = newArr.filter(task=>task.id!==idOfTask.id)
             setDataTask(result)
         }
-    },[addNewTask,removeNewTask,idOfTask])
+    },[addNewTask,removeNewTask,idOfTask,dataTask,id])
 
     return (
         <div 
@@ -67,6 +67,7 @@ function BoardItem ({board}) {
                 id={id}
                 dataTask={dataTask}
                 setDataTask={setDataTask}
+                type={"add-item"}
             />
             {/* {
                 showModal &&

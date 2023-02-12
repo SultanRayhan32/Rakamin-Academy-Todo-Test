@@ -119,6 +119,18 @@
     opacity: 0.5;
 }
 
+.modal-content > .delete-message {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #404040;
+    /* margin-left: 24px; */
+    margin-top: 24px;
+    width: 388px;
+    /* padding-left: 24px; */
+}
+
 .modal-content > .button-container {
     width: 388px;
     display: flex;

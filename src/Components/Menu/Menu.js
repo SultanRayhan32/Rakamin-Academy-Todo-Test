@@ -3,17 +3,21 @@ import React from 'react';
 import { FaArrowRight , FaArrowLeft } from 'react-icons/fa'
 import {BiEditAlt} from 'react-icons/bi'
 import {RiDeleteBinLine} from 'react-icons/ri'
-import axios from 'axios'
-
-import { API , URL } from '../../Helper/API-URL'
 
 import './Menu.css'
 
-function Menu ({id,todo_id,moveTaskAction,index}) {
+function Menu ({id,todo_id,moveTaskAction,index,setIsDelete,setCheckMenu}) {
 
     let handleMoveTask = (val) => {
+        setCheckMenu(false)
         document.getElementById(`menu-container-task-${id}`).style.display = "none"
         moveTaskAction(id,todo_id,val,index)
+    }
+
+    let handleEditDeleteTask = () => {
+        setCheckMenu(false)
+        document.getElementById(`menu-container-task-${id}`).style.display = "none"
+        document.getElementById(`modal${id}`).style.display = "flex"
     }
 
     return (
@@ -50,7 +54,10 @@ function Menu ({id,todo_id,moveTaskAction,index}) {
                 </span>
             </div>
 
-            <div className="title-container-icon">
+            <div
+                onClick={e=>handleEditDeleteTask()}
+                className="title-container-icon"
+            >
                 <BiEditAlt
                     className="icon"
                     size={18}
@@ -60,7 +67,13 @@ function Menu ({id,todo_id,moveTaskAction,index}) {
                 </span>
             </div>
 
-            <div className="title-container-icon-dlt">
+            <div 
+                onClick={e=>[
+                    handleEditDeleteTask(),
+                    setIsDelete(true)
+                ]}  
+                className="title-container-icon-dlt"
+            >
                 <RiDeleteBinLine
                     className="icon"
                     size={18}

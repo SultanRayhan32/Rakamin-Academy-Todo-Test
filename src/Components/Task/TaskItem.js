@@ -1,11 +1,12 @@
-import React , { useState } from 'react';
+import React , {  useState } from 'react';
 
 import { FiMoreHorizontal } from 'react-icons/fi';
 import { HiCheckCircle } from 'react-icons/hi';
 
 import Menu from '../Menu/Menu';
+import Modal from '../Modal/Modal';
 
-function TaskItem ({task,moveTaskAction,index}) {
+function TaskItem ({task,moveTaskAction,index,dataTask,setDataTask}) {
 
     const {
         name,
@@ -15,6 +16,7 @@ function TaskItem ({task,moveTaskAction,index}) {
     } = task
 
     const [checkMenu,setCheckMenu] = useState(false)
+    const [isDelete,setIsDelete] = useState(false)
 
     const checkProggresPercentage = () => {
         if (progress_percentage === 100) {
@@ -30,9 +32,11 @@ function TaskItem ({task,moveTaskAction,index}) {
 
     return (
         <div className="task-content">
+
            <span className="task-title">
                 {name}
            </span>
+
            <div className="container-proggres-edit" style={{position:"relative"}}>
                 <div className="proggres-bar-border">
                     <div 
@@ -53,22 +57,45 @@ function TaskItem ({task,moveTaskAction,index}) {
                             {progress_percentage + "%"}
                         </span>
                 }
+
                 {
                     checkMenu && 
                         <div 
                             className="menu-fake"
-                            onClick={e=>[document.getElementById(`menu-container-task-${id}`).style.display = "none",setCheckMenu(false)]}
+                            onClick={e=>[setCheckMenu(false),document.getElementById(`menu-container-task-${id}`).style.display = "none",console.log("wkwkwkwkkw")]}
                         >
 
                         </div>
                 }
+
                 <FiMoreHorizontal 
                     className="more-menu"
                     size={20}
                     // onClick={e=>}
                     onClick={e=>[document.getElementById(`menu-container-task-${task.id}`).style.display = "flex",setCheckMenu(true)]}
                 />
-                <Menu id={id} todo_id={todo_id} moveTaskAction={moveTaskAction} index={index}/>
+
+                <Menu 
+                    id={id} 
+                    todo_id={todo_id} 
+                    moveTaskAction={moveTaskAction} 
+                    index={index}
+                    setIsDelete={setIsDelete}
+                    setCheckMenu={setCheckMenu}
+                />
+
+                <Modal 
+                    id={id} 
+                    todo_id={todo_id}
+                    index={index}
+                    type={isDelete?"delete-item" : "edit-item"} 
+                    // type={"edit-item"} 
+                    dataTask={dataTask} 
+                    task={task}
+                    setDataTask={setDataTask}
+                    setIsDelete={setIsDelete}
+                />
+
            </div>
         </div>
     )
