@@ -1,4 +1,4 @@
-import React , { useState } from 'react';
+import React , { useState , useEffect } from 'react';
 
 import Task from '../Task/Task';
 import AddTask from './AddTask';
@@ -13,6 +13,10 @@ function BoardItem ({board}) {
         description,
         last,
         index,
+        moveTaskAction,
+        addNewTask,
+        removeNewTask,
+        idOfTask,
         id
     } = board
 
@@ -26,6 +30,18 @@ function BoardItem ({board}) {
             return {marginRight: 24 }
         } else return null
     }
+
+    useEffect(()=>{
+        if (id === addNewTask) {
+            let newArr = [...dataTask]
+            newArr.unshift(idOfTask)
+            setDataTask(newArr)
+        }else if (id === removeNewTask) {
+            let newArr = [...dataTask]
+            let result = newArr.filter(task=>task.id!==idOfTask.id)
+            setDataTask(result)
+        }
+    },[addNewTask,removeNewTask,idOfTask])
 
     return (
         <div 
@@ -41,7 +57,7 @@ function BoardItem ({board}) {
                 {description}
             </span>
 
-            <Task data={{id,setDataTask,dataTask}}/>
+            <Task data={{id,setDataTask,dataTask,moveTaskAction,index}}/>
 
             <AddTask
                 id={id}

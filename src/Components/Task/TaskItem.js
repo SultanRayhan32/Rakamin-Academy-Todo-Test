@@ -5,12 +5,13 @@ import { HiCheckCircle } from 'react-icons/hi';
 
 import Menu from '../Menu/Menu';
 
-function TaskItem ({task}) {
+function TaskItem ({task,moveTaskAction,index}) {
 
     const {
         name,
         progress_percentage,
-        id
+        id,
+        todo_id,
     } = task
 
     const [checkMenu,setCheckMenu] = useState(false)
@@ -67,7 +68,7 @@ function TaskItem ({task}) {
                     // onClick={e=>}
                     onClick={e=>[document.getElementById(`menu-container-task-${task.id}`).style.display = "flex",setCheckMenu(true)]}
                 />
-                <Menu id={id}/>
+                <Menu id={id} todo_id={todo_id} moveTaskAction={moveTaskAction} index={index}/>
            </div>
         </div>
     )

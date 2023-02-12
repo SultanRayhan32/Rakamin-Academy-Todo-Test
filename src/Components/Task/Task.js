@@ -12,7 +12,9 @@ function Task ({data}) {
     const {
         dataTask,
         setDataTask,
-        id
+        moveTaskAction,
+        id,
+        index
     } = data
 
     useEffect(()=>{
@@ -26,7 +28,7 @@ function Task ({data}) {
         .then(({data})=>{
             let arrNew = [...data]
             arrNew.sort((a,b)=>{
-                return new Date(b.created_at) - new Date(a.created_at)
+                return new Date(b.updated_at) - new Date(a.updated_at)
             })
             setDataTask(arrNew)
         })
@@ -36,7 +38,7 @@ function Task ({data}) {
     let renderTask = () => {
         if (dataTask.length === 0) return <NoItem/>
         return dataTask.map((task)=>{
-            return <TaskItem task={task}/>
+            return <TaskItem task={task} moveTaskAction={moveTaskAction} index={index}/>
         })
     }
 
