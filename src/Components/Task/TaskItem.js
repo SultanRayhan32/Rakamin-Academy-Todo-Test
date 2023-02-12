@@ -6,7 +6,13 @@ import { HiCheckCircle } from 'react-icons/hi';
 import Menu from '../Menu/Menu';
 import Modal from '../Modal/Modal';
 
-function TaskItem ({task,moveTaskAction,index,dataTask,setDataTask}) {
+function TaskItem ({
+    task,
+    moveTaskAction,
+    index,
+    dataTask,
+    setDataTask
+}) {
 
     const {
         name,
@@ -62,7 +68,10 @@ function TaskItem ({task,moveTaskAction,index,dataTask,setDataTask}) {
                     checkMenu && 
                         <div 
                             className="menu-fake"
-                            onClick={e=>[setCheckMenu(false),document.getElementById(`menu-container-task-${id}`).style.display = "none",console.log("wkwkwkwkkw")]}
+                            onClick={e=>[
+                                setCheckMenu(false),
+                                document.getElementById(`menu-container-task-${id}`).style.display = "none"
+                            ]}
                         >
 
                         </div>
@@ -71,8 +80,10 @@ function TaskItem ({task,moveTaskAction,index,dataTask,setDataTask}) {
                 <FiMoreHorizontal 
                     className="more-menu"
                     size={20}
-                    // onClick={e=>}
-                    onClick={e=>[document.getElementById(`menu-container-task-${task.id}`).style.display = "flex",setCheckMenu(true)]}
+                    onClick={e=>[
+                        document.getElementById(`menu-container-task-${task.id}`).style.display = "flex",
+                        setCheckMenu(true)
+                    ]}
                 />
 
                 <Menu 
@@ -89,7 +100,6 @@ function TaskItem ({task,moveTaskAction,index,dataTask,setDataTask}) {
                     todo_id={todo_id}
                     index={index}
                     type={isDelete?"delete-item" : "edit-item"} 
-                    // type={"edit-item"} 
                     dataTask={dataTask} 
                     task={task}
                     setDataTask={setDataTask}

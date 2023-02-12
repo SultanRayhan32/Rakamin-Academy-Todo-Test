@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { FaArrowRight , FaArrowLeft } from 'react-icons/fa'
-import {BiEditAlt} from 'react-icons/bi'
-import {RiDeleteBinLine} from 'react-icons/ri'
+import { BiEditAlt } from 'react-icons/bi'
+import { RiDeleteBinLine } from 'react-icons/ri'
 
 import './Menu.css'
 

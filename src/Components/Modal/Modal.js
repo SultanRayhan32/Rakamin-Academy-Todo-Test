@@ -15,7 +15,6 @@ function Modal (props) {
         dataTask,
         type,
         todo_id,
-        index,
         task,
         setIsDelete,
         dataBoard,
@@ -77,7 +76,6 @@ function Modal (props) {
         })
         .then(({data})=>{
             let newArr = [...dataTask]
-            // newArr[index] = data
             newArr = newArr.filter(task=>task.id!==id)
             newArr.unshift(data)
             setDataTask(newArr)
@@ -119,7 +117,6 @@ function Modal (props) {
             }
         })
         .then(({data})=>{
-            console.log('>><><><><>< )()()()(')
             let newData = [...dataBoard]
             newData.unshift(data)
             setDataBoard(newData)
@@ -212,7 +209,6 @@ function Modal (props) {
                                     placeholder={type==="add-board" ? "Type your todo" : "Type your task"}
                                     onChange={e=>setName(e.target.value)}
                                     value={name}
-                                    // defaultValue={type ==="edit-task" ? dataTask[index].name : null}
                                 />
                             </div>
 

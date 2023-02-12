@@ -37,15 +37,11 @@ function Board () {
     },[])
 
     let moveTaskAction = (taskId,todoId,valueMove,indexLength) => {
-        // console.log(todoId + valueMove , ' 3333')
-        // if (todoId + valueMove >= 0 && todoId + valueMove <= dataBoard.length-1) {
         if (indexLength === 0 && valueMove === -1  ) {
 
         }else if (indexLength === dataBoard.length -1 && valueMove === 1) {
 
         }else {
-            console.log(indexLength)
-            console.log(dataBoard[indexLength+valueMove])
             axios({
                 method: 'PATCH', 
                 url: `${URL}todos/${todoId}/items/${taskId}`, 
@@ -57,16 +53,11 @@ function Board () {
                 }
             })
             .then(({data})=>{
-                console.log("***************** WKWKWK ***********************")
-                // setEditedTaskId(dataBoard[indexLength+valueMove].id)
                 setAddNewTask(dataBoard[indexLength+valueMove].id)
                 setRemoveNewTask(dataBoard[indexLength].id)
                 setIdOfTask(data)
-                // fetchDataBoard()
-                // let arrNew = [...dataBoard]
-                // let beforeValue
             })
-            .catch(err=>{console.log(err, '  <<<< ERROR KENAPAA')})   
+            .catch(err=>{console.log(err, '  <<<< ERROR MESSAGE')})   
         }
     }
 

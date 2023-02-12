@@ -55,7 +55,14 @@ function BoardItem ({board}) {
                 {description}
             </span>
 
-            <Task data={{id,setDataTask,dataTask,moveTaskAction,index}}/>
+            {/* <Task data={{id,setDataTask,dataTask,moveTaskAction,index}}/> */}
+            <Task 
+                id={id}
+                setDataTask={setDataTask}
+                dataTask={dataTask}
+                moveTaskAction={moveTaskAction}
+                index={index}
+            />
 
             <AddTask
                 id={id}
@@ -67,9 +74,6 @@ function BoardItem ({board}) {
                 setDataTask={setDataTask}
                 type={"add-item"}
             />
-            {/* {
-                showModal &&
-            } */}
 
         </div>
     )

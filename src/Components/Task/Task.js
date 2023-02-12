@@ -7,7 +7,7 @@ import { URL , API } from '../../Helper/API-URL'
 
 import './Task.css'
 
-function Task ({data}) {
+function Task (props) {
 
     const {
         dataTask,
@@ -15,7 +15,7 @@ function Task ({data}) {
         moveTaskAction,
         id,
         index
-    } = data
+    } = props
 
 
     useEffect(()=>{
@@ -30,7 +30,6 @@ function Task ({data}) {
             let arrNew = [...data]
             arrNew.sort((a,b)=>{
                 return new Date(b.updated_at) - new Date(a.updated_at)
-                // return new Date(b.created_at) - new Date(a.created_at)
             })
             setDataTask(arrNew)
         })
